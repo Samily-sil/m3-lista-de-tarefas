@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e2e2e2;
+}
+
+.header__title {
+    color: #3b5bdb;
+}
+
+.form__button--add-task {
+    background-color: #3b5bdb;
+    color: white;
+    border: none;
+    border-radius: 8%
+}
+
+input{
+    background-color: #ebebeb;
+}
+
+li {
+    background-color: #f1f3f5;
+}
+
+.urgente {
+    color: #e40404;
+}
+
+.normal {
+    color: #028302;
+}
+
+.importante {
+    color: #f3a703;
+}
+
+.task-info__container {
+    background-image: url("assets/trash-icon.svg"); /* Caminho da imagem */
+    background-size: 20px; 
+    background-repeat: no-repeat; 
+    background-position: right ; 
+    padding-right: 30px; /* Espaço para não colar no texto */
+    display: inline-block; /* Para se ajustar ao conteúdo */
+    width: 500px;  /* Defina a largura desejada */
+    height: 100px; /* Defina a altura desejada */
+}

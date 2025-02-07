@@ -10,3 +10,11 @@ const tasks = [
   {title: "Pagar a conta de energia", type: "Urgente"},
   {title: "Assistir a um documentário interessante", type: "Normal"},
 ];
+
+function renderElements (tasks) {
+  const lista = document.querySelector('ul');
+}
+
+function createTaskItem (title, type) {
+  
+}
