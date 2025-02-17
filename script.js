@@ -11,16 +11,17 @@ const tasks = [
   // {title: "Assistir a um documentário interessante", type: "Normal"},
 ];
 
+
 function renderElements(tasks) {
   const taskList = document.querySelector("ul");
   taskList.innerHTML = "";
 
-  tasks.forEach(task => {
-    const taskItem = createTaskItem(task); 
-    taskList.appendChild(taskItem); 
-  });
+  for (let i = 0; i < tasks.length; i++) {
+    const taskItem = createTaskItem(tasks[i]);
+    taskList.appendChild(taskItem);
+  }
 }
-renderElements(tasks);
+renderElements(tasks)
 
 function createTaskItem(task) {
   const li = document.createElement('li');
@@ -51,7 +52,11 @@ function createTaskItem(task) {
   button.setAttribute("aria-label", "Remover tarefa");
 
   button.addEventListener("click", () => {
-    li.remove();
+    const index = tasks.findIndex(t => t.title === task.title && t.type === task.type);
+    if (index !== -1) {
+      tasks.splice(index, 1); 
+      renderElements(tasks); 
+    }
   });
 
   li.appendChild(div);
@@ -72,7 +77,6 @@ addButton.addEventListener("click", function (event) {
     return;
   }
 
-  inputType = inputType.charAt(0).toUpperCase() + inputType.slice(1).toLowerCase();
   const newTask = { title: inputTitle, type: inputType };
   tasks.push(newTask);
   renderElements(tasks);
