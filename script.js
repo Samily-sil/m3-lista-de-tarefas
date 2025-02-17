@@ -3,12 +3,12 @@ const tasks = [
   {title: "Consertar Computador", type: "Importante"},
   {title: "Beber água", type: "Normal"},
   {title: "Enviar relatório trimestral", type: "Importante"},
-  {title: "Fazer exercícios físicos", type: "Normal"},
-  {title: "Agendar consulta médica", type: "Urgente"},
-  {title: "Ler pelo menos um capítulo de um livro", type: "Normal"},
-  {title: "Limpar a despensa", type: "Importante"},
-  {title: "Pagar a conta de energia", type: "Urgente"},
-  {title: "Assistir a um documentário interessante", type: "Normal"},
+  // {title: "Fazer exercícios físicos", type: "Normal"},
+  // {title: "Agendar consulta médica", type: "Urgente"},
+  // {title: "Ler pelo menos um capítulo de um livro", type: "Normal"},
+  // {title: "Limpar a despensa", type: "Importante"},
+  // {title: "Pagar a conta de energia", type: "Urgente"},
+  // {title: "Assistir a um documentário interessante", type: "Normal"},
 ];
 
 function renderElements(tasks) {
@@ -16,8 +16,8 @@ function renderElements(tasks) {
   taskList.innerHTML = "";
 
   tasks.forEach(task => {
-    const taskItem = createTaskItem(task); // Cria o elemento <li>
-    taskList.appendChild(taskItem); // Adiciona à <ul>
+    const taskItem = createTaskItem(task); 
+    taskList.appendChild(taskItem); 
   });
 }
 renderElements(tasks);
@@ -48,6 +48,11 @@ function createTaskItem(task) {
 
   const button = document.createElement('button');
   button.classList.add('task__button--remove-task');
+  button.setAttribute("aria-label", "Remover tarefa");
+
+  button.addEventListener("click", () => {
+    li.remove();
+  });
 
   li.appendChild(div);
   li.appendChild(button);
@@ -55,3 +60,23 @@ function createTaskItem(task) {
   return li;
 }
 
+const addButton = document.querySelector(".form__button--add-task");
+addButton.addEventListener("click", function (event) {
+  event.preventDefault(); 
+
+  const inputTitle = document.querySelector("#input_title").value.trim();
+  let inputType = document.querySelector(".form__input--priority").value.trim();
+
+  if (inputTitle === "" || inputType === "") {
+    alert("Por favor, preencha todos os campos!");
+    return;
+  }
+
+  inputType = inputType.charAt(0).toUpperCase() + inputType.slice(1).toLowerCase();
+  const newTask = { title: inputTitle, type: inputType };
+  tasks.push(newTask);
+  renderElements(tasks);
+
+  document.querySelector("#input_title").value = "";
+  document.querySelector(".form__input--priority").value = "";
+});
