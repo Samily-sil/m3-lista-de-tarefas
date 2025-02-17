@@ -3,12 +3,12 @@ const tasks = [
   {title: "Consertar Computador", type: "Importante"},
   {title: "Beber água", type: "Normal"},
   {title: "Enviar relatório trimestral", type: "Importante"},
-  // {title: "Fazer exercícios físicos", type: "Normal"},
-  // {title: "Agendar consulta médica", type: "Urgente"},
-  // {title: "Ler pelo menos um capítulo de um livro", type: "Normal"},
-  // {title: "Limpar a despensa", type: "Importante"},
-  // {title: "Pagar a conta de energia", type: "Urgente"},
-  // {title: "Assistir a um documentário interessante", type: "Normal"},
+  {title: "Fazer exercícios físicos", type: "Normal"},
+  {title: "Agendar consulta médica", type: "Urgente"},
+  {title: "Ler pelo menos um capítulo de um livro", type: "Normal"},
+  {title: "Limpar a despensa", type: "Importante"},
+  {title: "Pagar a conta de energia", type: "Urgente"},
+  {title: "Assistir a um documentário interessante", type: "Normal"},
 ];
 
 
@@ -71,7 +71,8 @@ addButton.addEventListener("click", function (event) {
 
   const inputTitle = document.querySelector("#input_title").value.trim();
   let inputType = document.querySelector(".form__input--priority").value.trim();
-
+  inputType = inputType.charAt(0).toUpperCase() + inputType.slice(1).toLowerCase();  
+  
   if (inputTitle === "" || inputType === "") {
     alert("Por favor, preencha todos os campos!");
     return;
